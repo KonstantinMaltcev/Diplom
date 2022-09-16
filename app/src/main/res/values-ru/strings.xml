@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_hint">Название рецепта</string>
+    <string name="author_name_hint">Автор рецепта &#128104;</string>
+    <string name="text_recipe_hint">Рецептура</string>
+    <string name="button_apply_text">Применить фильтр</string>
+    <string name="all_recipes">Рецепты</string>
+    <string name="filter">Фильтр</string>
+    <string name="favorites">Избранное</string>
+    <string name="text_background">Здесь пока ничего нет!</string>
+    <string name="remove">Удалить</string>
+    <string name="edit">Изменить</string>
+    <string name="app_name">Книга рецептов</string>
+    <string name="button_add_description">Добавить</string>
+    <string name="icon_background_description">Картинка значка</string>
+    <string name="text_hint">Подсказка</string>
+    <string name="button_clear_filter">Очистить фильтр</string>
+    <string name="button_save_description">Сохранить</string>
+    <string name="menu_options_description">Параметры меню</string>
+    <string name="category_recipe_hint">Принадлежность кухни к региону</string>
+    <string name="search">Поиск </string>
+    <string name="button_favorite_description">Избранное</string>
+    <string name="description_recipe_options">Меню рецепта</string>
+    <string name="description_recipe_favorite">Избранный рецепт</string>
+    <string name="add_recipe">Добавить рецепт &#127831;</string>
+    <string name="description_recipe_save">Сохранить рецепт</string>
+    <string name="menu_edit">Редактировать</string>
+    <string name="description_recipe_drag">Перетащить рецепт</string>
+    <string name="description_content_media">Медиаконтент</string>
+    <string name="title_text">Введите заголовок</string>
+    <string name="category_text">Выберете категорию кухни</string>
+    <string name="title_home">Рецепты</string>
+    <string name="title_favorite">Избранное</string>
+    <string name="search_by_recipe">Поиск по рецептам &#128373;</string>
+    <string name="filterTextFragment">Фильтр</string>
+    <string name="step_text_for_number">Шаг №</string>
+    <string name="title">Заголовок:</string>
+    <string name="category">Категория &#127757;:</string>
+    <string name="empty_state_text">Здесь ничего нет &#128577;</string>
+    <string name="empty_state_text_done">Пожалуйста, измените фильтр или добавьте рецепт!</string>
+    <string name="empty_state_text_favorite">В избранном пусто</string>
+    <string name="edit_text_step">Шаг для приготовления блюда…</string>
+    <string name="text_add_edit_step"> &#128076; Введите описание шага для приготовления блюда:</string>
+    <string name="add_picture">Добавить картинку :</string>
+    <string-array name="category_names">
+        <item>Европейская</item>
+        <item>Азиатская</item>
+        <item>Паназиатская</item>
+        <item>Восточная</item>
+        <item>Американская</item>
+        <item>Русская</item>
+        <item>Средиземноморская</item>
+    </string-array>
+    <string name="author_text">Ведите имя автора</string>
+
+</resources>
