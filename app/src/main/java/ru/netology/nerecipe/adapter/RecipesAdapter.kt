@@ -60,9 +60,6 @@ internal class RecipesAdapter(
             oldItem.content == newItem.content
     }
 
-
-//     val differ = AsyncListDiffer(this, DiffCallback)
-
     fun moveItem(from: Int, to: Int) {
         val list = currentList.toMutableList()
         val fromLocation = list[from]

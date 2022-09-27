@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nerecipe.databinding.FilterBinding
 
 internal class FiltersAdapter(
-    private val interactionListener: FilterInteractionListener
+    private val interactionListener: FilterInteractionListener,
 ) : ListAdapter<String, FiltersAdapter.ViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,17 +23,15 @@ internal class FiltersAdapter(
 
     inner class ViewHolder(
         private val binding: FilterBinding,
-        listener: FilterInteractionListener
+        listener: FilterInteractionListener,
     ) : RecyclerView.ViewHolder(binding.root) {
 
         private lateinit var category: String
 
         init {
             binding.checkboxCategoryFilter.setOnCheckedChangeListener { _, isChecked ->
-                when {
-                    isChecked -> listener.filterOn(category)
-                    !isChecked -> listener.filterOff(category)
-                }
+                if (isChecked) listener.filterOn(category)
+                else listener.filterOff(category)
             }
         }
 

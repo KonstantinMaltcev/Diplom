@@ -32,7 +32,7 @@ class FeedFragment : Fragment() {
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
+                target: RecyclerView.ViewHolder,
             ): Boolean {
                 val adapter = recyclerView.adapter as RecipesAdapter
                 val from = viewHolder.absoluteAdapterPosition
@@ -50,7 +50,9 @@ class FeedFragment : Fragment() {
                 return true
             }
 
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {}
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                // пустое переопределение
+            }
 
             override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
                 super.onSelectedChanged(viewHolder, actionState)
@@ -61,7 +63,7 @@ class FeedFragment : Fragment() {
 
             override fun clearView(
                 recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder
+                viewHolder: RecyclerView.ViewHolder,
             ) {
                 super.clearView(recyclerView, viewHolder)
                 viewHolder.itemView.alpha = 1.0f
@@ -129,7 +131,7 @@ class FeedFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ) = FeedFragmentBinding.inflate(
         layoutInflater, container, false
     ).also { binding ->
@@ -141,19 +143,17 @@ class FeedFragment : Fragment() {
         recyclerViewAdapter = RecipesAdapter(viewModel)
 
         viewModel.filterResult.observe(viewLifecycleOwner) { recipes ->
-            when {
-                recipes.isNullOrEmpty() -> binding.emptyStateGroup.visibility = View.VISIBLE
-                else -> binding.emptyStateGroup.visibility = View.GONE
-            }
+            if (recipes.isNullOrEmpty()) binding.emptyStateGroup.visibility = View.VISIBLE
+            else binding.emptyStateGroup.visibility = View.GONE
             recyclerViewAdapter.submitList(recipes)
         }
-with(binding) {
-    recipeRecyclerView.layoutManager = LinearLayoutManager(context)
-    recipeRecyclerView.adapter = recyclerViewAdapter
+        with(binding) {
+            recipeRecyclerView.layoutManager = LinearLayoutManager(context)
+            recipeRecyclerView.adapter = recyclerViewAdapter
 
-    fab.setOnClickListener {
-        viewModel.onAddClicked()
-    }
-}
+            fab.setOnClickListener {
+                viewModel.onAddClicked()
+            }
+        }
     }.root
 }

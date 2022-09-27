@@ -8,7 +8,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import ru.netology.nerecipe.R
 import ru.netology.nerecipe.adapter.FiltersAdapter
-import ru.netology.nerecipe.databinding.FilterFragmentBinding
 import ru.netology.nerecipe.viewModel.RecipeViewModel
 
 class FilterFragment : Fragment() {
@@ -18,8 +17,8 @@ class FilterFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ) = FilterFragmentBinding.inflate(
+        savedInstanceState: Bundle?,
+    ) = ru.netology.nerecipe.databinding.FilterFragmentBinding.inflate(
         layoutInflater, container, false
     ).also { binding ->
 
@@ -30,6 +29,10 @@ class FilterFragment : Fragment() {
 
         adapterFilter.submitList(categoriesList)
 
-        binding.selectFilter.setOnClickListener { findNavController().popBackStack() }
+        binding.selectFilter.setOnClickListener {
+            if (viewModel.getCategoriesChecked()) {                // TODO: Добавил запрет выбора пустого фильтра
+                findNavController().popBackStack()
+            }
+        }
     }.root
 }

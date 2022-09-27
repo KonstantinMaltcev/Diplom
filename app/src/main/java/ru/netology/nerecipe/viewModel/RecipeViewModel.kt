@@ -30,6 +30,7 @@ class RecipeViewModel(
 
     private val currentRecipe = MutableLiveData<Recipe?>(null)
     private val currentStep = MutableLiveData<Step?>(null)
+    private var categoryChecked = false
 
     val currentImageStep = MutableLiveData(/*value*/"")
 
@@ -37,7 +38,6 @@ class RecipeViewModel(
     var filterResult = Transformations.switchMap(filters) { filter ->
         repository.getFilteredList(filter)
     }
-
 
     val recipeEditOrAddScreenEvent = SingleLiveEvent<Recipe>()
     val currentRecipeScreenEvent = SingleLiveEvent<Recipe>()
@@ -74,9 +74,7 @@ class RecipeViewModel(
             stepText = textStep,
             picture = currentImageStep.value.toString()
         )
-
         repository.saveStep(stepForSave)
-
         currentStep.value = null
         currentRecipe.value = null
         currentImageStep.value = ""
@@ -151,18 +149,23 @@ class RecipeViewModel(
     override fun filterOn(category: String) {
         val filterList = filters.value
         filterList?.add(category)
+        categoryChecked = true
         filters.value = filterList
     }
 
     override fun filterOff(category: String) {
         val filterList = filters.value
         filterList?.remove(category)
+        categoryChecked = false
         filters.value = filterList
     }
 
     override fun getStatus(category: String): Boolean {
         return filters.value?.contains(category) == true
     }
+
+    // TODO: Добавил проверку на выбор категорий
+    fun getCategoriesChecked(): Boolean = categoryChecked
 
     //endregion FilterInteractionListener
 }
